@@ -1,0 +1,50 @@
+/* Base & sizing */
+html {
+  box-sizing: border-box;                /* predictable sizing */
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography & colors */
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  line-height: 1.5;
+  color: #0b2942;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+}
+
+/* Links */
+a {
+  font-weight: 500;
+  color: #0071a7;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* App shell */
+.app { min-height: 100%; display: flex; flex-direction: column; }
+.container { width: 100%; max-width: 960px; margin: 0 auto; padding: 16px; flex: 1; }
+
+/* Headings */
+h1, h2, h3 { margin: 0 0 8px; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

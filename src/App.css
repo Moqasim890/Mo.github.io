@@ -1,0 +1,474 @@
+/* ==========================================================================
+   BRUTALIST WIREFRAME THEME — HARD RESET (drop-in, no HTML changes)
+   Radicale visuele switch: zwart/wit, 2px borders, vierkante hoeken,
+   duidelijke focus, grid-achtergronden, zero-shadow.
+   ========================================================================== */
+
+/* =========================
+   0) Tokens
+   ========================= */
+:root{
+  --ink:#111;            /* Zwarte inkt */
+  --ink-2:#222;
+  --ink-3:#333;
+  --bg:#fff;             /* Witte achtergrond */
+  --bg-alt:#fafafa;
+  --bg-alt-2:#f3f3f3;
+
+  --accent:#111;         /* Alles in inkt; geen color candy */
+  --accent-2:#555;
+
+  --container:1200px;
+
+  --radii:0px;           /* Vierkante hoeken overal */
+  --radii-sm:0px;
+  --radii-lg:0px;
+
+  --b1:2px solid #111;   /* Dikke randen */
+  --b2:2px dashed #111;
+
+  --space-1:.5rem;
+  --space-2:1rem;
+  --space-3:1.5rem;
+  --space-4:2rem;
+  --space-6:3rem;
+  --space-8:4rem;
+
+  --nav-height:72px;
+
+  --h1:clamp(2.4rem,3.5vw,3.8rem);
+  --h2:clamp(1.6rem,2.4vw,2.4rem);
+
+  color-scheme: light;
+}
+
+/* =========================
+   1) Reset & Base
+   ========================= */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100%;overflow-x:hidden}
+html{scroll-padding-top:var(--nav-height)}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial, sans-serif;
+  line-height:1.25;
+  letter-spacing:.1px;
+}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit;background:none;border:none;appearance:none}
+a{text-decoration:none;color:inherit}
+#root,.site-wrapper{min-height:100vh;display:flex;flex-direction:column}
+.main-content{flex:1;width:100%;margin-top:var(--nav-height)}
+
+/* Focus: dikke contour zichtbaar */
+:where(a,button,input,textarea,select,[tabindex]):focus-visible{
+  outline:2px solid #111; outline-offset:2px;
+}
+
+/* Skip link */
+.skip-link{
+  position:absolute;left:0;top:-40px;padding:8px 12px;background:#fff;border:var(--b1);z-index:10000
+}
+.skip-link:focus{top:8px}
+
+/* =========================
+   2) Typografie
+   ========================= */
+h1{font-size:var(--h1);line-height:1.05;text-transform:uppercase;letter-spacing:.5px}
+h2{font-size:var(--h2);line-height:1.1;text-transform:uppercase;letter-spacing:.4px}
+p{margin-bottom:.9rem}
+strong{font-weight:900}
+
+/* =========================
+   3) Navigatie — hard bar
+   ========================= */
+.navbar{
+  position:fixed;inset:0 0 auto 0;height:var(--nav-height);z-index:1000;
+  background:#fff;border-bottom:var(--b1);
+}
+.nav-container{
+  max-width:var(--container);margin:0 auto;padding:0 var(--space-4);
+  height:100%;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{display:flex;align-items:center;gap:.6rem;font-weight:900}
+.logo-img{height:32px;width:auto;filter:grayscale(100%) contrast(120%)}
+.nav-links{display:flex;gap:.5rem;align-items:center}
+.nav-link{
+  padding:.7rem 1rem;border:var(--b1);border-radius:var(--radii);
+  font-weight:900;text-transform:uppercase;letter-spacing:.4px;
+  background:#fff;
+}
+.nav-link:hover{background:#000;color:#fff}
+.nav-link.active{background:#000;color:#fff}
+
+/* =========================
+   4) Hero — gridpaper look
+   ========================= */
+.hero{
+  background:
+    linear-gradient(#e7e7e7 1px, transparent 1px) 0 0/32px 32px,
+    linear-gradient(90deg,#e7e7e7 1px, transparent 1px) 0 0/32px 32px,
+    var(--bg);
+  border-bottom:var(--b1);
+  display:flex;justify-content:center;padding:var(--space-8) 0;
+}
+.hero-content{
+  width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--space-4);
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center;
+}
+.hero-content h1{margin-bottom:1rem}
+.hero-buttons{display:flex;gap:var(--space-2);margin-top:var(--space-4)}
+.hero-image{display:flex;justify-content:center;align-items:center}
+.hero-image img{
+  width:360px;height:auto;padding:24px;background:#fff;border:var(--b1)
+}
+@media (max-width:860px){
+  .hero-content{grid-template-columns:1fr;text-align:center}
+  .hero-image img{width:240px}
+}
+
+/* =========================
+   5) Knoppen — massief & outline
+   ========================= */
+.primary-button,.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.9rem 1.2rem;border:var(--b1);border-radius:var(--radii);
+  background:#000;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.4px;cursor:pointer
+}
+.primary-button:hover,.btn:hover{background:#fff;color:#000}
+.secondary-button,.btn.secondary{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.9rem 1.2rem;border:var(--b1);border-radius:var(--radii);
+  background:#fff;color:#000;font-weight:900;text-transform:uppercase;letter-spacing:.4px;cursor:pointer
+}
+.btn.ghost{
+  padding:.9rem 1.2rem;border:var(--b2);border-radius:var(--radii);background:transparent;
+  font-weight:900;text-transform:uppercase
+}
+.btn.sm{padding:.6rem .9rem}
+
+/* =========================
+   6) Inputs & formulieren — 2px, rechthoekig
+   ========================= */
+.input-row{display:grid;gap:6px}
+.input-hint{font-size:.9rem;color:var(--ink-3)}
+.input-error{font-size:.9rem;color:#b00020}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+select,textarea{
+  width:100%;padding:.85rem 1rem;border:var(--b1);border-radius:var(--radii);
+  background:#fff;color:#000
+}
+input::placeholder,textarea::placeholder{color:#777}
+input:focus,select:focus,textarea:focus{outline:3px solid #000;outline-offset:1px}
+input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="true"]{
+  border-color:#b00020;outline:3px solid #b00020
+}
+
+/* =========================
+   7) Features / Cards — panelen, geen schaduw
+   ========================= */
+.features{background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:var(--space-8) 0}
+.section-title{text-align:center;margin-bottom:2rem}
+.feature-grid{
+  max-width:var(--container);margin:0 auto;padding:0 var(--space-4);
+  display:grid;gap:var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+}
+.feature-card{
+  background:#fff;border:var(--b1);border-radius:var(--radii-lg);
+  padding:var(--space-4);text-align:left
+}
+.feature-card:hover{transform:none;background:#fafafa}
+.feature-icon{font-size:2.2rem;margin-bottom:1rem}
+
+/* =========================
+   8) CTA — volle balk
+   ========================= */
+.cta-section{
+  background:#000;color:#fff;text-align:center;display:flex;flex-direction:column;align-items:center;
+  padding:var(--space-8) 0;border-top:var(--b1);border-bottom:var(--b1)
+}
+.cta-section h2{font-size:var(--h2);margin-bottom:1rem}
+.cta-section .primary-button{background:#fff;color:#000}
+
+/* =========================
+   9) Footer — hard edge
+   ========================= */
+.site-footer{
+  background:#fff;display:flex;justify-content:center;padding:var(--space-4) 0;border-top:var(--b1)
+}
+.footer-content{
+  max-width:var(--container);margin:0 auto;padding:0 var(--space-4);
+  display:flex;justify-content:space-between;align-items:center
+}
+.footer-links{display:flex;gap:var(--space-3)}
+.footer-links a{border-bottom:2px solid transparent}
+.footer-links a:hover{border-bottom-color:#111}
+.copyright{color:#444;font-size:.95rem}
+@media (max-width:760px){
+  .footer-content{flex-direction:column;gap:var(--space-2);text-align:center}
+}
+
+/* =========================
+   10) Toasts — plaknotities
+   ========================= */
+.toast-message{
+  position:sticky;top:calc(var(--nav-height) + 8px);z-index:1100;
+  margin:0 auto var(--space-3);max-width:560px;padding:1rem;border:var(--b1);border-radius:var(--radii);
+  background:#fff;text-align:center;font-weight:900
+}
+.toast-message.ok{background:#eaffea;border-color:#111}
+.toast-message.err{background:#ffecec;border-color:#111}
+
+/* =========================
+   11) Teams page — lijntjes & tags
+   ========================= */
+.teams-page{
+  max-width:var(--container);margin:24px auto 80px;padding:0 var(--space-4);color:var(--ink)
+}
+.teams-page h1,.teams-page .page-title{
+  font-size:var(--h2);text-align:center;margin:0 0 var(--space-4)
+}
+.teams-page .lead{max-width:760px;color:#444;margin:0 auto var(--space-3);line-height:1.5}
+
+.teams-page .create-team{
+  max-width:760px;margin:0 auto var(--space-4);
+  display:grid;grid-template-columns:1fr auto;gap:var(--space-2)
+}
+
+.teams-page input[type="text"],.teams-page input[type="search"]{
+  padding:.9rem 1rem;border:var(--b1);border-radius:var(--radii);background:#fff
+}
+
+.btn{background:#000;color:#fff}
+.btn.secondary{background:#fff;color:#000}
+.btn:hover{background:#fff;color:#000}
+
+.teams-page .teams-list{display:grid;gap:var(--space-3);max-width:900px;margin:0 auto}
+
+.teams-page .team-card{
+  background:#fff;border:var(--b1);border-radius:var(--radii-lg);padding:var(--space-3)
+}
+.teams-page .team-head{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--space-2);margin-bottom:var(--space-2)
+}
+.teams-page .team-name{font-size:1.35rem;font-weight:900}
+.teams-page .team-meta{color:#444;font-weight:700}
+.teams-page .team-actions{display:flex;gap:.5rem}
+
+.teams-page .pokemon-row{display:flex;flex-wrap:wrap;gap:10px;margin:var(--space-1) 0 var(--space-2)}
+.teams-page .poke-chip{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 10px;
+  border:var(--b1);border-radius:0;background:#fff;font-weight:900
+}
+.teams-page .poke-chip .remove{
+  display:inline-grid;place-items:center;width:20px;height:20px;border:var(--b1);border-radius:0;background:#000;color:#fff;cursor:pointer
+}
+
+.teams-page .add-row{display:grid;grid-template-columns:1fr auto;gap:var(--space-2);margin-top:var(--space-2)}
+.teams-page .helper-text{color:#555;font-size:.95rem;margin-top:6px}
+
+.teams-page a{border-bottom:2px solid #111}
+.teams-page a:hover{background:#111;color:#fff}
+
+.teams-page .empty{text-align:center;color:#666;padding:var(--space-6) 0}
+
+@media (max-width:640px){
+  .teams-page .create-team,.teams-page .add-row{grid-template-columns:1fr}
+  .teams-page .team-head{grid-template-columns:1fr}
+  .teams-page .team-actions{justify-content:flex-start}
+}
+
+/* =========================
+   12) Pokémon Detail — ruw, contrastrijk
+   ========================= */
+.pokemon-detail{
+  max-width:var(--container);
+  margin:20px auto 64px;
+  padding:0 var(--space-4) var(--space-4);
+  color:var(--ink);background:var(--bg)
+}
+
+/* Terug-link */
+.back-link{
+  display:inline-flex;gap:8px;align-items:center;margin:6px 0 18px;
+  color:#000;border-bottom:2px solid #000;font-weight:900;text-transform:uppercase
+}
+.back-link:hover{background:#000;color:#fff}
+
+/* Header */
+.pokemon-header{
+  display:grid;grid-template-columns:1fr auto;align-items:end;gap:12px;
+  margin-bottom:12px;padding-bottom:10px;border-bottom:var(--b1)
+}
+.pokemon-header h1{margin:0}
+
+/* ID label */
+.pokemon-id{
+  padding:6px 10px;border:var(--b1);border-radius:0;background:#fff;color:#000;font-weight:900
+}
+
+/* Grid */
+.pokemon-grid{display:grid;grid-template-columns:1fr;gap:22px}
+@media(min-width:900px){ .pokemon-grid{grid-template-columns:0.9fr 1.1fr;gap:26px} }
+
+/* Artwork card */
+.artwork-card{
+  position:relative;background:#fff;border:var(--b1);border-radius:0;
+  display:grid;place-items:center;padding:26px;min-height:360px;overflow:visible;min-width:280px
+}
+.artwork-card::before{
+  content:'Artwork';position:absolute;top:8px;left:8px;font-weight:900;font-size:.8rem;letter-spacing:.3px;
+  padding:2px 6px;border:var(--b2);background:#fff
+}
+.pokemon-image{
+  max-width:92%;max-height:480px;width:auto;height:auto;object-fit:contain;display:block;
+  filter:none
+}
+.no-image{
+  color:#555;border:var(--b2);padding:16px 18px;border-radius:0;text-transform:uppercase;font-weight:900
+}
+
+/* Info */
+.pokemon-info{display:grid;gap:22px}
+.info-card{
+  background:#fff;border:var(--b1);border-radius:0;padding:18px;display:grid;gap:8px
+}
+.info-row{
+  display:grid;grid-template-columns:1fr;gap:6px;padding:14px;border:var(--b1);border-radius:0;background:#fafafa
+}
+.info-row + .info-row{margin-top:10px}
+.info-row strong{
+  color:#444;font-weight:900;text-transform:uppercase;letter-spacing:.6px;font-size:12px
+}
+.info-row strong + *{font-size:16px;font-weight:900;letter-spacing:.2px}
+
+/* Stats — gestreepte progress */
+.stats-container{margin-top:8px}
+.stats-container > strong{
+  display:inline-block;margin:6px 0 12px;color:#444;font-weight:900;text-transform:uppercase;letter-spacing:.6px;font-size:12px
+}
+.stats-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stat-row{
+  display:grid;grid-template-rows:auto auto auto;gap:8px;padding:14px;background:#fff;border:var(--b1);border-radius:0
+}
+.stat-name{color:#444;font-weight:900;text-transform:uppercase;letter-spacing:.6px;font-size:11px}
+.stat-value{font-size:28px;line-height:1;font-weight:900;color:#000}
+.stat-bar-container{
+  height:10px;border-radius:0;background:#f0f0f0;overflow:hidden;border:var(--b1)
+}
+.stat-bar{
+  height:100%;width:0%;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #000 0 10px,
+      transparent 10px 20px
+    );
+  transition:width 420ms cubic-bezier(.22,.61,.36,1)
+}
+
+/* Moves — ruwe tags */
+.moves-card{
+  background:#fff;border:var(--b1);border-radius:0;padding:14px 0 6px
+}
+.moves-card > strong{
+  display:block;padding:0 16px 10px;color:#444;font-weight:900;text-transform:uppercase;letter-spacing:.6px;font-size:12px
+}
+.moves-grid{
+  display:grid;grid-auto-flow:column;grid-auto-columns:max-content;gap:10px;
+  overflow-x:auto;padding:0 16px 10px;scrollbar-width:thin;scroll-snap-type:x mandatory
+}
+.moves-grid > *{scroll-snap-align:start}
+.moves-grid::-webkit-scrollbar{height:10px}
+.moves-grid::-webkit-scrollbar-thumb{background:#111}
+.move-tag{
+  display:inline-flex;align-items:center;padding:10px 14px;border:var(--b1);border-radius:0;background:#fff;
+  font-weight:900;white-space:nowrap
+}
+.move-tag:hover{background:#000;color:#fff}
+
+/* Status cards */
+.loading-card,.error-card{
+  margin-top:10px;padding:14px 16px;border:var(--b1);border-radius:0;background:#fff
+}
+.loading-card strong{color:#000}
+.error-card strong{color:#b00020}
+
+/* =========================
+   13) Utilities
+   ========================= */
+.u-center{display:grid;place-items:center}
+.u-stack-sm > * + *{margin-top:.5rem}
+.u-stack > * + *{margin-top:1rem}
+.u-stack-lg > * + *{margin-top:1.5rem}
+.u-muted{color:#555}
+.u-divider{height:2px;background:#111;margin:12px 0}
+
+/* =========================
+   14) Motion & responsive
+   ========================= */
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+@media (max-width:768px){
+  .feature-grid{grid-template-columns:1fr}
+}
+/* --- Pokedex page layout --- */
+.pokedex-page { max-width: var(--container); margin: 24px auto 96px; padding: 0 var(--space-4); }
+.pokedex-controls { display: grid; grid-template-columns: 1fr auto; gap: var(--space-2); margin: var(--space-3) auto; max-width: 760px; }
+.pokedex-controls input[type="search"] { padding: .85rem 1rem; border: 1px solid var(--bg-alt-2); border-radius: 10px; background: var(--surface, #fff); }
+.pokedex-count { align-self: center; font-weight: 700; opacity: .75; }
+
+.pokedex-grid {
+  list-style: none;
+  display: grid; gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  margin-top: var(--space-3);
+}
+
+.pokedex-card {
+  display: grid; grid-template-rows: auto auto; align-items: center;
+  border: 1px solid var(--bg-alt-2, #e5e7eb);
+  border-radius: 14px; padding: 12px;
+  background: var(--surface, #fff);
+  text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.pokedex-card:hover { transform: translateY(-2px); box-shadow: 0 10px 18px rgba(0,0,0,.08); }
+
+.pokedex-figure { display: grid; place-items: center; aspect-ratio: 1 / 1; background: var(--bg-alt, #f6f8fc); border-radius: 10px; overflow: hidden; }
+.pokedex-figure img { max-width: 90%; height: auto; filter: drop-shadow(0 12px 18px rgba(0,0,0,.10)); }
+
+.pokedex-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 10px 4px 2px; }
+.pokedex-id { font-weight: 900; opacity: .6; }
+.pokedex-name { font-weight: 900; text-transform: capitalize; }
+
+/* skeletons */
+.skeleton { position: relative; overflow: hidden; }
+.skeleton .pokedex-figure,
+.skeleton .pokedex-name,
+.skeleton .pokedex-id { background: linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.12), rgba(0,0,0,.06)); background-size: 200% 100%; animation: sk 1.2s infinite; color: transparent; }
+.skeleton .pokedex-figure { aspect-ratio: 1 / 1; border-radius: 10px; }
+.skeleton .pokedex-meta { padding: 10px 4px 2px; }
+@keyframes sk { to { background-position: -200% 0; } }
+/* Teams inline detail modal */
+.chip-link { border-bottom: 2px solid #111; background: none; cursor: pointer; font-weight: 900; }
+.chip-link:hover { background: #111; color: #fff; }
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.55);
+  display: grid; place-items: center; z-index: 2000; padding: 18px;
+}
+.modal-panel {
+  width: min(1100px, 96vw); max-height: 92vh; overflow: auto;
+  border: var(--b1); border-radius: var(--radii);
+  background: var(--bg); padding: 18px;
+}
+.modal-close { position: sticky; top: 0; margin-left: auto; z-index: 10; }
