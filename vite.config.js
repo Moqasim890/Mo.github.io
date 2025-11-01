@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/'   // vervang <repo-naam> door je echte GitHub-repo
+  base: '/Mo.github.io/'   // vervang <repo-naam> door je echte GitHub-repo
 })
