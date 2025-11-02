@@ -116,7 +116,7 @@ function Pokedex() {
   }
 
   return (
-    <section className="pokedex-page">
+    <div className="pokedex-container">
       <h1 className="page-title" style={{ padding: 40 }}>Pokédex</h1>
       <p className="lead">Browse and click any Pokémon to preview full details.</p>
 
@@ -221,7 +221,7 @@ function Pokedex() {
           onClose={closeModal}
         />
       )}
-    </section>
+    </div>
   );
 }
 
