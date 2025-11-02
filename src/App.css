@@ -427,20 +427,21 @@ input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="tr
 .pokedex-count { align-self: center; font-weight: 700; opacity: .75; }
 
 .pokedex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 0;
   list-style: none;
-  display: grid; gap: var(--space-3);
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  margin-top: var(--space-3);
 }
 
 .pokedex-card {
-  display: grid; grid-template-rows: auto auto; align-items: center;
-  border: 1px solid var(--bg-alt-2, #e5e7eb);
-  border-radius: 14px; padding: 12px;
-  background: var(--surface, #fff);
-  text-decoration: none;
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s;
 }
+
+/* Add more styles as needed */
 .pokedex-card:hover { transform: translateY(-2px); box-shadow: 0 10px 18px rgba(0,0,0,.08); }
 
 .pokedex-figure { display: grid; place-items: center; aspect-ratio: 1 / 1; background: var(--bg-alt, #f6f8fc); border-radius: 10px; overflow: hidden; }
