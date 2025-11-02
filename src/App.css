@@ -106,17 +106,37 @@ strong{font-weight:900}
    4) Hero — gridpaper look
    ========================= */
 .hero{
-  background:
-    linear-gradient(#e7e7e7 1px, transparent 1px) 0 0/32px 32px,
-    linear-gradient(90deg,#e7e7e7 1px, transparent 1px) 0 0/32px 32px,
-    var(--bg);
-  border-bottom:var(--b1);
-  display:flex;justify-content:center;padding:var(--space-8) 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.hero-content{
-  width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--space-4);
-  display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center;
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
 .hero-content h1{margin-bottom:1rem}
 .hero-buttons{display:flex;gap:var(--space-2);margin-top:var(--space-4)}
 .hero-image{display:flex;justify-content:center;align-items:center}
@@ -473,3 +493,18 @@ input[aria-invalid="true"],select[aria-invalid="true"],textarea[aria-invalid="tr
   background: var(--bg); padding: 18px;
 }
 .modal-close { position: sticky; top: 0; margin-left: auto; z-index: 10; }
+
+/* Base styles */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  width: 100%;
+  background: white;
+  padding: 1rem;
+}
