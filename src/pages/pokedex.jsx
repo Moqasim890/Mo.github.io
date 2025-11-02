@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import "../App.css";
 
@@ -32,7 +32,7 @@ function useOnScreen(ref, rootMargin = "400px") {
   return visible;
 }
 
-export default function Pokedex() {
+function Pokedex() {
   const [items, setItems] = useState([]); // {name, url, id}
   const [nextUrl, setNextUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=60&offset=0"
@@ -391,3 +391,5 @@ function PokemonDetailModal({ name, onClose }) {
     </div>
   );
 }
+
+export default Pokedex;
