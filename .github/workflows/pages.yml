@@ -22,15 +22,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      # Install dependencies en build
       - run: npm ci
       - run: npm run build
-
-      # SPA fallback: zorg dat deep links ook je app laden
-      - run: cp dist/index.html dist/404.html
-
-      # Upload /dist als Pages-artifact
+      - run: cp dist/index.html dist/404.html   # SPA fallback
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
