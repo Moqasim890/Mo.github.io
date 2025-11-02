@@ -8,7 +8,7 @@ import React, { Suspense, lazy, useEffect } from "react";
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Teams = lazy(() => import("./pages/Teams.jsx"));
 const PokemonDetail = lazy(() => import("./pages/PokemonDetail.jsx"));
-const Pokedex = lazy(() => import("./pages/Pokedex.jsx"));
+import Pokedex from './pages/Pokedex.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation();

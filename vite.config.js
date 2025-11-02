@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/' // Change this if this is not your user/organization site
+  base: '/Mo.github.io/' // Change this to match your repository name
 })
 //fixed deployment issue with gh pages by adding base property
 //https://vitejs.dev/guide/static-deploy.html#github-pages
